@@ -4,9 +4,9 @@ from bitstring import BitArray
 # Conexión a tu base en Aiven
 db = MySQLDatabase(
     'defaultdb',
-    user=Usuarios_1 ,
-    password=Password,
-    host=Host,
+    user= st.session_state["A_1"] ,
+    password= st.session_state["B_1"] ,
+    host=st.session_state["C_1"],
     port=19758
 )
 class Usuario(Model):
