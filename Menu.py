@@ -1,10 +1,10 @@
 import streamlit as st
 from PIL import Image
+from ai21 import AI21Client
+from ai21.models.chat import ChatMessage
+from peewee import MySQLDatabase, Model, CharField, IntegerField
 
 
-
-def Buscar(Texto):
-    return f"https://www.google.com/search?q={Texto.replace(' ', '+')}"
 
 
 if "Auntentificado" not in st.session_state or not st.session_state["Auntentificado"]:
@@ -13,14 +13,58 @@ if "Auntentificado" not in st.session_state or not st.session_state["Auntentific
 st.title(":blue[Toolfy]")
 
 
+# Inicializa el cliente con tu clave API
+
+db = MySQLDatabase(
+    'defaultdb',
+    user= Usuarios_1,
+    password= Password,
+    host= Host,
+    port=19758
+)
+class Usuario(Model):
+    nombre = CharField()
+    contraseña = CharField()
+    Api = CharField()
+
+    class Meta:
+        database = db
+        
+        
+db.connect()
+db.create_tables([Usuario])
+
+
+
+User = Usuario.select().where(Usuario.nombre == st.session_state["usuario"]).first()
+
+
 st.write("Bienvenido al menu principal .")
 st.write("")
 st.write("")
 st.write("")
-st.write('''''')
-Text = st.text_input("Buscar")
+API = User.Api
 
-if st.button("Buscar") and Text.strip():
-    st.experimental_open_url(Buscar(Text))
+st.write("Inserte su pregunta en esta zona:")
+Text = st.text_input("Pregunta")
+
+def Respuesta(mensajes):
+    # Realiza la solicitud de completado de chat
+    response = client.chat.completions.create(
+        messages=mensajes,
+        model="jamba-1.5-mini"
+    )
+    content = response.choices[0].message.content  # Accede al contenido
+    return content
+
+if st.button("Preguntar") and Text.strip():
+    try:
+        
+        client = AI21Client(api_key=API)
+        st.write(Respuesta([ChatMessage(role="user", content=Text)]))
+        
+    except Exception:
+        st.error("Error: API Key incorrecta o no válida.")
+    
     
     
