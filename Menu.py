@@ -3,11 +3,13 @@ from PIL import Image
 from ai21 import AI21Client
 from ai21.models.chat import ChatMessage
 from peewee import MySQLDatabase, Model, CharField, IntegerField
+
+
 db = MySQLDatabase(
     'defaultdb',
-    user=Usuarios_1 ,
-    password=Password,
-    host=Host,
+    user=st.secrets["Usuarios_1"],
+    password=st.secrets["Password"],
+    host=st.secrets["Host"],
     port=19758
 )
 
@@ -24,9 +26,9 @@ class Usuario(Model):
 db.connect()
 db.create_tables([Usuario])
 
-st.session_state["A_1"] = Usuarios_1
-st.session_state["B_1"] = Password
-st.session_state["C_1"] = Host
+st.session_state["A_1"] = st.secrets["Usuarios_1"]
+st.session_state["B_1"] = st.secrets["Password"]
+st.session_state["C_1"] = st.secrets["Host"]
 
 
 
