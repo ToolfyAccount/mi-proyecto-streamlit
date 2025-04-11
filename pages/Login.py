@@ -1,6 +1,21 @@
 import streamlit as st
 from bitstring import BitArray
+from peewee import MySQLDatabase, Model, CharField, IntegerField
 
+db = MySQLDatabase(
+    'defaultdb',
+    user=Usuarios_1 ,
+    password=Password,
+    host=Host,
+    port=19758
+)
+class Usuario(Model):
+    nombre = CharField()
+    contraseña = CharField()
+    Api = CharField()
+
+    class Meta:
+        database = db
 def Binario(texto):
     
     binario = ' '.join(BitArray(bytes=c.encode()).bin for c in texto)
@@ -10,7 +25,6 @@ def Binario(texto):
 
 st.title("Inicio de sesion")
 
-Base_de_datos = {"Julian": "01010000 01110010 01110101 01100101 01100010 01100001"}
 
 # Entrada de texto
 usuario = st.text_input("Escribe tu nombre")
@@ -18,11 +32,18 @@ Contraseña = st.text_input("Escribe tu contraseña", type="password")
 
 # Botóns
 if st.button("Iniciar sesion"):
-    if Binario(Contraseña) == Base_de_datos[usuario]:
-        st.write(f"¡Hola, {usuario}!")
-        st.session_state["Auntentificado"] = True
-        st.session_state["usuario"] = usuario
-        st.switch_page("Menu.py")
-        
-    else: 
-        st.write("Contraseña incorrecta")
+    db.connect()
+    db.create_tables([Usuario])
+    User = Usuario.select().where(Usuario.nombre == usuario).first()
+    if User == None:
+        st.warning("Usuario no encontrado")
+    else:
+        if Binario(Contraseña) == User.contraseña:
+            st.write(f"¡Hola, {usuario}!")
+            st.session_state["Auntentificado"] = True
+            st.session_state["usuario"] = usuario
+            st.session_state["Api"] = User.Api
+            st.switch_page("Menu.py")
+            
+        else: 
+            st.warning("Contraseña incorrecta")
