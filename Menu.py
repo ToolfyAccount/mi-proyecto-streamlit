@@ -3,25 +3,15 @@ from PIL import Image
 from ai21 import AI21Client
 from ai21.models.chat import ChatMessage
 from peewee import MySQLDatabase, Model, CharField, IntegerField
-
-
-
-
-if "Auntentificado" not in st.session_state or not st.session_state["Auntentificado"]:
-    st.error("No estás autorizado. Redirigiendo al inicio de sesión...")
-    st.switch_page("pages/Login.py")  
-st.title(":blue[Toolfy]")
-
-
-# Inicializa el cliente con tu clave API
-
 db = MySQLDatabase(
     'defaultdb',
-    user= Usuarios_1,
-    password= Password,
-    host= Host,
+    user=Usuarios_1 ,
+    password=Password,
+    host=Host,
     port=19758
 )
+
+
 class Usuario(Model):
     nombre = CharField()
     contraseña = CharField()
@@ -33,6 +23,22 @@ class Usuario(Model):
         
 db.connect()
 db.create_tables([Usuario])
+
+st.session_state["A_1"] = Usuarios_1
+st.session_state["B_1"] = Password
+st.session_state["C_1"] = Host
+
+
+
+if "Auntentificado" not in st.session_state or not st.session_state["Auntentificado"]:
+    st.error("No estás autorizado. Redirigiendo al inicio de sesión...")
+    st.switch_page("pages/Login.py")  
+st.title(":blue[Toolfy]")
+
+
+# Inicializa el cliente con tu clave API
+
+
 
 
 
@@ -65,6 +71,5 @@ if st.button("Preguntar") and Text.strip():
         
     except Exception:
         st.error("Error: API Key incorrecta o no válida.")
-    
     
     
