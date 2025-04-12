@@ -7,6 +7,9 @@ from ai21.models.chat import ChatMessage
 from peewee import MySQLDatabase, Model, CharField, IntegerField
 from docx import Document
 import io
+
+# Sidebar ordenada
+
 # Configuración de base de datos
 db = MySQLDatabase(
     'defaultdb',
@@ -117,6 +120,7 @@ st.markdown(f'<div class="subtext">Bienvenido, <strong>{User.nombre}</strong>. E
 st.markdown("### ❓ Inserta tu pregunta:")
 Text = st.text_input("Escribe aqui tu consulta.", placeholder="¿Qué deseas preguntar hoy?")
 st.markdown('</div>', unsafe_allow_html=True)
+
 
 # Función para obtener respuesta
 def Respuesta(mensajes):
