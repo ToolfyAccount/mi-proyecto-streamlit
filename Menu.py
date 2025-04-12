@@ -75,7 +75,7 @@ if st.button("Preguntar") and Text.strip():
             RTAT = RTA.replace("(Generacion.txt)", "")
             st.download_button(
             label="⬇️ Descargar respuesta en .txt",
-            data=RTAT.enconded("utf-8"),
+            data=RTAT.enconde("utf-8"),
             file_name=("Generacion.txt"),
             mime="text/plain"
             )
