@@ -4,11 +4,12 @@ from bitstring import BitArray
 # Conexión a tu base en Aiven
 db = MySQLDatabase(
     'defaultdb',
-    user= st.session_state["A_1"] ,
-    password= st.session_state["B_1"] ,
-    host=st.session_state["C_1"],
+    user= st.secrets["Usuarios_1"] ,
+    password= st.secrets["Password"],
+    host=st.secrets["Host"],
     port=19758
 )
+
 class Usuario(Model):
     nombre = CharField()
     contraseña = CharField()
