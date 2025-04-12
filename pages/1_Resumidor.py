@@ -44,7 +44,7 @@ st.session_state["C_1"] = st.secrets["Host"]
 
 if "Auntentificado" not in st.session_state or not st.session_state["Auntentificado"]:
     st.error("🚫 No estás autorizado. Redirigiendo al inicio de sesión...")
-    st.switch_page("pages/Login.py")
+    st.switch_page("pages/2_Login.py")
 
 # --- ESTÉTICA PERSONALIZADA ---
 st.markdown(
