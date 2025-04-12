@@ -1,10 +1,10 @@
+
 import streamlit as st
 from PIL import Image
 from io import BytesIO
 from ai21 import AI21Client
 from ai21.models.chat import ChatMessage
 from peewee import MySQLDatabase, Model, CharField, IntegerField
-
 
 # Configuración de base de datos
 db = MySQLDatabase(
@@ -54,7 +54,7 @@ st.markdown(
         margin-bottom: 10px;
     }
 
-    /* Subtítulo de bienvenida */
+    /* Subtítulo */
     .subtext {
         text-align: center;
         color: #aaa;
@@ -62,7 +62,7 @@ st.markdown(
         margin-bottom: 40px;
     }
 
-    /* Caja de entrada */
+    /* Caja contenedora */
     .input-box {
         padding: 20px;
         border-radius: 10px;
@@ -70,16 +70,16 @@ st.markdown(
         margin-bottom: 20px;
     }
 
-    /* Estilo al input */
-    input[type="text"] {
+    /* Input personalizado */
+    .stTextInput>div>div>input {
         background-color: #2c2f36;
         color: white;
-        border-radius: 8px;
-        padding: 10px;
         border: none;
+        padding: 10px;
+        border-radius: 8px;
     }
 
-    input::placeholder {
+    .stTextInput>div>div>input::placeholder {
         color: #aaa;
     }
 
@@ -91,6 +91,7 @@ st.markdown(
         border-radius: 10px;
         padding: 10px 20px;
         transition: background-color 0.3s ease;
+        border: none;
     }
 
     .stButton > button:hover {
