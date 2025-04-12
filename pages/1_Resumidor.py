@@ -155,13 +155,13 @@ def Respuesta(mensajes):
     return response.choices[0].message.content
 
 # Botón para preguntar
-if st.button("💬 Preguntar", type="primary"):
-    if st.session_state.archivo_cargado is not None:
+if st.button("💬 Resumir.", type="primary"):
+    if archivo_nuevo is not None:
         if archivo_nuevo.type == "text/plain":
-            Text = st.session_state.archivo_cargado.read().decode("utf-8")
+            Text = archivo_nuevo.read().decode("utf-8")
                     
         elif archivo_nuevo.type == "application/vnd.openxmlformats-officedocument.wordprocessingml.document":
-            doc = Document(st.session_state.archivo_cargado)
+            doc = Document(archivo_nuevo)
             Text = "\n".join([p.text for p in doc.paragraphs])
     if Text.strip():
         try:
