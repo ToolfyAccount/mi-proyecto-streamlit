@@ -48,7 +48,7 @@ def Respuesta(mensajes):
     # Realiza la solicitud de completado de chat
     response = client.chat.completions.create(
         messages=mensajes,
-        model="jamba-1.5-mini"
+        model="jamba-1.5-large"
     )
     content = response.choices[0].message.content  # Accede al contenido
     return content
