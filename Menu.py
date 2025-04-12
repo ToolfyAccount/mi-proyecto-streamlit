@@ -112,9 +112,9 @@ API = User.Api
 st.markdown(f'<div class="subtext">Bienvenido, <strong>{User.nombre}</strong>. Estás en el menú principal.</div>', unsafe_allow_html=True)
 
 # Entrada de pregunta
-st.markdown('<div class="input-box">', unsafe_allow_html=True)
+
 st.markdown("### ❓ Inserta tu pregunta:")
-Text = st.text_input("", placeholder="¿Qué deseas preguntar hoy?")
+Text = st.text_input("Escribe aqui tu consulta.", placeholder="¿Qué deseas preguntar hoy?")
 st.markdown('</div>', unsafe_allow_html=True)
 
 # Función para obtener respuesta
