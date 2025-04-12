@@ -35,41 +35,73 @@ if "Auntentificado" not in st.session_state or not st.session_state["Auntentific
     st.error("🚫 No estás autorizado. Redirigiendo al inicio de sesión...")
     st.switch_page("pages/Login.py")
 
-# --- DISEÑO ESTÉTICO INICIA AQUÍ ---
+# --- ESTÉTICA PERSONALIZADA ---
 st.markdown(
     """
     <style>
+    /* Página general */
+    body {
+        background-color: #0e1117;
+        color: white;
+    }
+
+    /* Título principal */
     .main-title {
         font-size: 48px;
         font-weight: bold;
         color: #3399ff;
         text-align: center;
-        margin-bottom: 30px;
+        margin-bottom: 10px;
     }
+
+    /* Subtítulo de bienvenida */
     .subtext {
         text-align: center;
-        color: #666;
+        color: #aaa;
         font-size: 18px;
         margin-bottom: 40px;
     }
+
+    /* Caja de entrada */
     .input-box {
         padding: 20px;
         border-radius: 10px;
-        background-color: #f3f6fc;
+        background-color: #1e1e1e;
         margin-bottom: 20px;
     }
-    .custom-button {
-        background-color: #4CAF50;
+
+    /* Estilo al input */
+    input[type="text"] {
+        background-color: #2c2f36;
+        color: white;
+        border-radius: 8px;
+        padding: 10px;
+        border: none;
+    }
+
+    input::placeholder {
+        color: #aaa;
+    }
+
+    /* Botón personalizado */
+    .stButton > button {
+        background-color: #ff4b4b;
         color: white;
         font-weight: bold;
         border-radius: 10px;
         padding: 10px 20px;
+        transition: background-color 0.3s ease;
+    }
+
+    .stButton > button:hover {
+        background-color: #ff6666;
     }
     </style>
     """,
     unsafe_allow_html=True
 )
 
+# --- INTERFAZ PRINCIPAL ---
 st.markdown('<div class="main-title">🧠 Toolfy</div>', unsafe_allow_html=True)
 
 # Usuario actual
@@ -84,7 +116,7 @@ st.markdown("### ❓ Inserta tu pregunta:")
 Text = st.text_input("Escribe aquí tu consulta", placeholder="¿Qué deseas preguntar hoy?")
 st.markdown('</div>', unsafe_allow_html=True)
 
-
+# Función para obtener respuesta
 def Respuesta(mensajes):
     response = client.chat.completions.create(
         messages=mensajes,
@@ -92,7 +124,7 @@ def Respuesta(mensajes):
     )
     return response.choices[0].message.content
 
-
+# Botón para preguntar
 if st.button("💬 Preguntar", type="primary"):
     if Text.strip():
         try:
