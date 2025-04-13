@@ -1,4 +1,3 @@
-
 import streamlit as st
 from PIL import Image
 from io import BytesIO
@@ -44,7 +43,7 @@ st.session_state["C_1"] = st.secrets["Host"]
 
 if "Auntentificado" not in st.session_state or not st.session_state["Auntentificado"]:
     st.error("🚫 No estás autorizado. Redirigiendo al inicio de sesión...")
-    st.switch_page("pages/2_Login.py")
+    st.switch_page("pages/3_Login.py")
 
 # --- ESTÉTICA PERSONALIZADA ---
 st.markdown(
@@ -150,7 +149,9 @@ st.markdown('</div>', unsafe_allow_html=True)
 def Respuesta(mensajes):
     response = client.chat.completions.create(
         messages=mensajes,
-        model="jamba-1.5-large"
+        model="jamba-1.5-large",
+        temperature=0,
+        max_tokens=4090
     )
     return response.choices[0].message.content
 
@@ -168,7 +169,7 @@ if st.button("💬 Resumir.", type="primary"):
             client = AI21Client(api_key=API)
             
             RTA = Respuesta([
-                ChatMessage(role="user", content= (f"Resume el siguiente texto de manera concisa, destacando solo los puntos más importantes y esenciales. El resumen debe ser directo al grano, sin incluir detalles innecesarios o redundantes. Mensaje del usuario:{Text}"))
+                ChatMessage(role="user", content= (f"Resume el siguiente texto de forma clara y estructurada, conservando toda la información relevante, el contexto y los detalles esenciales. El resumen debe ser más corto que el texto original, pero no excesivamente breve. Asegúrate de incluir los puntos clave, hechos importantes, relaciones entre ideas y cualquier información crítica para comprender el contenido completo. Mensaje del usuario:{Text}"))
             ])
                
             
