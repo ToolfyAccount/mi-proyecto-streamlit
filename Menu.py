@@ -37,7 +37,7 @@ st.session_state["C_1"] = st.secrets["Host"]
 
 if "Auntentificado" not in st.session_state or not st.session_state["Auntentificado"]:
     st.error("🚫 No estás autorizado. Redirigiendo al inicio de sesión...")
-    st.switch_page("pages/2_Login.py")
+    st.switch_page("pages/3_Login.py")
 
 # --- ESTÉTICA PERSONALIZADA ---
 st.markdown(
@@ -126,7 +126,9 @@ st.markdown('</div>', unsafe_allow_html=True)
 def Respuesta(mensajes):
     response = client.chat.completions.create(
         messages=mensajes,
-        model="jamba-1.5-large"
+        model="jamba-1.5-large",
+        temperature=0.6,
+        max_tokens=4090
     )
     return response.choices[0].message.content
 
