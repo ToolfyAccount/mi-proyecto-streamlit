@@ -120,7 +120,7 @@ st.markdown('<div class="main-title">✨ Creador de Historias</div>', unsafe_all
 User = Usuario.select().where(Usuario.nombre == st.session_state["usuario"]).first()
 API = User.Api
 
-st.markdown(f'<div class="subtext">Bienvenido, <strong>{User.nombre}</strong>. Estás en el Resumidor.</div>', unsafe_allow_html=True)
+st.markdown(f'<div class="subtext">Bienvenido, <strong>{User.nombre}</strong>. Estás en el Creador de Historias.</div>', unsafe_allow_html=True)
 
 # Entrada de pregunta
 
