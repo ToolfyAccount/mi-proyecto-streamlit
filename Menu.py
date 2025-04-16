@@ -55,7 +55,20 @@ st.markdown(
 st.markdown('<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400&display=swap" rel="stylesheet"> <div class="titulo">LeverFul</div>', unsafe_allow_html=True)
 
 # Subtítulo
-st.markdown('<div class="subtext">Bienvenido a la plataforma LeverFul. Esta pagina hay vaias herramientas de IA, cada una esta especializada para su trabajo, para poder utilizarla, debe registrarse y en la zona de API debe insertar su api. Para obtener la API, necesitas registrarte en [AI21 LABS](https://www.ai21.com) e ir a la zona de APIs, ahi estara tu API la cual debes insertar aca.  Selecciona la opción que deseas.</div>', unsafe_allow_html=True)
+
+
+st.write('''
+<div class="subtext">
+Bienvenido a la plataforma LeverFul. En esta página encontrarás varias herramientas de IA, cada una especializada en su tarea. Para poder utilizarlas, debes registrarte y, en la zona de API, insertar tu clave API.
+
+
+Para obtenerla, necesitas registrarte en <a href="https://www.ai21.com" target="_blank">AI21 LABS</a> e ir a la sección de APIs. Allí encontrarás tu API key, la cual deberás insertar aquí. 
+
+Selecciona la opción que deseas.
+</div>
+''', unsafe_allow_html=True)
+
+
 st.markdown("Aca hay varias IAs. Selecciona la opción que desees:")
 # Botones para navegar a otras páginas
 if st.button("🧠 IA Principal"):
