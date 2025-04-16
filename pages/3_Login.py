@@ -1,6 +1,11 @@
 import streamlit as st
 from bitstring import BitArray
 from peewee import MySQLDatabase, Model, CharField, IntegerField
+import hashlib
+
+def convertir_a_sha256(texto):
+    sha256_hash = hashlib.sha256(texto.encode()).hexdigest()
+    return sha256_hash
 
 db = MySQLDatabase(
     'defaultdb',
@@ -38,12 +43,12 @@ if st.button("Iniciar sesion"):
     if User == None:
         st.warning("Usuario no encontrado")
     else:
-        if Binario(Contraseña) == User.contraseña:
+        if convertir_a_sha256(Contraseña) == User.contraseña:
             st.write(f"¡Hola, {usuario}!")
             st.session_state["Auntentificado"] = True
             st.session_state["usuario"] = usuario
             st.session_state["Api"] = User.Api
-            st.switch_page("Menu.py")
+            st.switch_page("IA.py")
             
         else: 
             st.warning("Contraseña incorrecta")

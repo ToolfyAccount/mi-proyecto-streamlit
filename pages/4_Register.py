@@ -1,6 +1,11 @@
 from peewee import MySQLDatabase, Model, CharField, IntegerField
 import streamlit as st
 from bitstring import BitArray
+import hashlib
+
+def convertir_a_sha256(texto):
+    sha256_hash = hashlib.sha256(texto.encode()).hexdigest()
+    return sha256_hash
 # Conexión a tu base en Aiven
 db = MySQLDatabase(
     'defaultdb',
@@ -44,11 +49,11 @@ if st.button("Registrarse"):
 
 
     if not existe:
-        Usuario.create(nombre=usuario, contraseña=Binario(Contraseña), Api=api)
+        Usuario.create(nombre=usuario, contraseña=convertir_a_sha256(Contraseña), Api=api)
         st.write(f"¡Hola, {usuario}!")
         st.session_state["Auntentificado"] = True
         st.session_state["usuario"] = usuario
-        st.switch_page("Menu.py")
+        st.switch_page("IA.py")
     else:
         st.write("El usuario ya está tomado")
         

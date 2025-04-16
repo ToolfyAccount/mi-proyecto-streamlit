@@ -106,13 +106,13 @@ st.markdown(
 )
 
 # --- INTERFAZ PRINCIPAL ---
-st.markdown('<div class="main-title">🧠 Toolfy</div>', unsafe_allow_html=True)
+st.markdown('<div class="main-title">🧠 IA</div>', unsafe_allow_html=True)
 
 # Usuario actual
 User = Usuario.select().where(Usuario.nombre == st.session_state["usuario"]).first()
 API = User.Api
 
-st.markdown(f'<div class="subtext">Bienvenido, <strong>{User.nombre}</strong>. Estás en el menú principal.</div>', unsafe_allow_html=True)
+st.markdown(f'<div class="subtext">Bienvenido, <strong>{User.nombre}</strong>. Estás en el IA principal.</div>', unsafe_allow_html=True)
 
 # Entrada de pregunta
 
