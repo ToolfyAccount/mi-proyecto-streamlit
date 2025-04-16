@@ -44,7 +44,6 @@ st.session_state["C_1"] = st.secrets["Host"]
 if "Auntentificado" not in st.session_state or not st.session_state["Auntentificado"]:
     st.error("🚫 No estás autorizado. Redirigiendo al inicio de sesión...")
     st.switch_page("pages/3_Login.py")
-
 # --- ESTÉTICA PERSONALIZADA ---
 st.markdown(
     """
@@ -57,12 +56,28 @@ st.markdown(
 
     /* Título principal */
     .main-title {
-        font-size: 48px;
-        font-weight: bold;
-        color: #3399ff;
-        text-align: center;
-        margin-bottom: 10px;
-    }
+    font-size: 48px;
+    font-weight: bold;
+    color: #3399ff;
+    text-align: center;
+    margin-bottom: 10px;
+
+
+}
+    .titulo {
+    font-size: 48px;
+    font-weight: 100; /* Versión más ligera */
+    color: #D0E7FF;
+    text-align: center;
+    margin-bottom: 10px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+
+
+
+
+
 
     /* Subtítulo */
     .subtext {
@@ -113,6 +128,7 @@ st.markdown(
 )
 
 # --- INTERFAZ PRINCIPAL ---
+st.markdown('<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400&display=swap" rel="stylesheet"> <div class="titulo">LEVERFUL</div>', unsafe_allow_html=True)
 st.markdown('<div class="main-title">✨ Creador de Historias</div>', unsafe_allow_html=True)
 
 # Usuario actual
