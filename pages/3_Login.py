@@ -3,6 +3,7 @@ from bitstring import BitArray
 from peewee import MySQLDatabase, Model, CharField, IntegerField
 import hashlib
 
+
 def convertir_a_sha256(texto):
     sha256_hash = hashlib.sha256(texto.encode()).hexdigest()
     return sha256_hash

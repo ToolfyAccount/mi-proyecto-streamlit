@@ -8,12 +8,7 @@ from docx import Document
 import io
 
 # Sidebar ordenada
-st.set_page_config(
-    page_title="LEVERFUL",  # Este es el nombre que aparece en la pestaña del navegador
-    page_icon="https://raw.githubusercontent.com/toolfy/mi-proyecto-streamlit/main/.streamlit/Logo/Logo.png",                      # Icono que aparece en la pestaña
-    layout="centered",                  # O "wide"
-    initial_sidebar_state="auto"
-)
+
 # Configuración de base de datos
 db = MySQLDatabase(
     'defaultdb',
