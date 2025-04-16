@@ -53,7 +53,7 @@ if st.button("Registrarse"):
         st.write(f"¡Hola, {usuario}!")
         st.session_state["Auntentificado"] = True
         st.session_state["usuario"] = usuario
-        st.switch_page("IA.py")
+        st.switch_page("Menu.py")
     else:
         st.write("El usuario ya está tomado")
         

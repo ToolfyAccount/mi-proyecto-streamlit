@@ -49,7 +49,7 @@ if st.button("Iniciar sesion"):
             st.session_state["Auntentificado"] = True
             st.session_state["usuario"] = usuario
             st.session_state["Api"] = User.Api
-            st.switch_page("IA.py")
+            st.switch_page("Menu.py")
             
         else: 
             st.warning("Contraseña incorrecta")
