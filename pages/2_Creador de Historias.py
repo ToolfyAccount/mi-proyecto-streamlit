@@ -128,7 +128,7 @@ st.markdown(
 )
 
 # --- INTERFAZ PRINCIPAL ---
-st.markdown('<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400&display=swap" rel="stylesheet"> <div class="titulo">LEVERFUL</div>', unsafe_allow_html=True)
+st.markdown('<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400&display=swap" rel="stylesheet"> <div class="titulo"> LEVERFUL</div>', unsafe_allow_html=True)
 st.markdown('<div class="main-title">✨ Creador de Historias</div>', unsafe_allow_html=True)
 
 # Usuario actual

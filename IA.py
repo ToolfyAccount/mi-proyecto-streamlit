@@ -8,7 +8,12 @@ from docx import Document
 import io
 
 # Sidebar ordenada
-
+st.set_page_config(
+    page_title="LEVERFUL",  # Este es el nombre que aparece en la pestaña del navegador
+    page_icon="https://raw.githubusercontent.com/toolfy/mi-proyecto-streamlit/main/.streamlit/Logo/Logo.png",                      # Icono que aparece en la pestaña
+    layout="centered",                  # O "wide"
+    initial_sidebar_state="auto"
+)
 # Configuración de base de datos
 db = MySQLDatabase(
     'defaultdb',
@@ -122,7 +127,7 @@ st.markdown(
 )
 
 # --- INTERFAZ PRINCIPAL ---
-st.markdown('<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400&display=swap" rel="stylesheet"> <div class="titulo">LEVERFUL</div>', unsafe_allow_html=True)
+st.markdown('<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400&display=swap" rel="stylesheet"> <div class="titulo"> LEVERFUL</div>', unsafe_allow_html=True)
 st.markdown('<div class="main-title">🧠 IA</div>', unsafe_allow_html=True)
 
 # Usuario actual
