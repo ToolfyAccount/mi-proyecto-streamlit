@@ -15,9 +15,7 @@ db = MySQLDatabase(
     password=os.environ.get("Password"),
     host=os.environ.get("Host"),
     port=19758,
-    connect_kwargs={
-        'ssl': {'fake_flag_to_enable_ssl': True}
-    }
+    ssl={'fake_flag_to_enable_ssl': True}  # ✅ Este es el cambio importante
 )
 
 class Usuario(Model):
