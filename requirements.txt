@@ -61,4 +61,6 @@ tzdata==2025.2
 urllib3==2.4.0
 watchdog==6.0.0
 mysql-connector-python==9.2.0
+fastapi
+uvicorn
 
