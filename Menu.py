@@ -86,5 +86,5 @@ import os
 
 # Forzar a Streamlit a usar el puerto que Railway asigna
 port = os.environ.get("PORT", 8501)
-os.environ["STREAMLIT_SERVER_PORT"] = str(port)
+
 
