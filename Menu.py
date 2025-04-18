@@ -3,18 +3,8 @@ from fastapi import FastAPI
 from starlette.responses import Response
 from streamlit.web.server import Server
 
-# Creamos una app FastAPI adicional
-app = FastAPI()
 
-@app.get("/ads.txt")
-async def ads():
-    contenido = """
-    google.com, pub-XXXXXXXXXXXXXXXX, DIRECT, f08c47fec0942fa0
-    """
-    return Response(content=contenido.strip(), media_type="text/plain")
 
-# Inyectamos la app FastAPI en el servidor de Streamlit
-Server.get_current()._server._http_app.mount("/", app)
 # Configuración de la página
 st.set_page_config(
     page_title="LeverFul",  # Título de la ventana en el navegador
