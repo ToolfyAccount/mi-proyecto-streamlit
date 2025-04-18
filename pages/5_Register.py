@@ -2,16 +2,16 @@ from peewee import MySQLDatabase, Model, CharField, IntegerField
 import streamlit as st
 from bitstring import BitArray
 import hashlib
-
+import os
 def convertir_a_sha256(texto):
     sha256_hash = hashlib.sha256(texto.encode()).hexdigest()
     return sha256_hash
 # Conexión a tu base en Aiven
 db = MySQLDatabase(
     'defaultdb',
-    user= st.secrets["Usuarios_1"] ,
-    password= st.secrets["Password"],
-    host=st.secrets["Host"],
+    user=os.environ.get("USUARIOS_1"),    # Lee la variable de entorno USUARIOS_1
+    password=os.environ.get("PASSWORD"),   # Lee la variable de entorno PASSWORD
+    host=os.environ.get("HOST"),           # Lee la variable de entorno HOST
     port=19758
 )
 
