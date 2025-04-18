@@ -6,7 +6,7 @@ from ai21.models.chat import ChatMessage
 from peewee import MySQLDatabase, Model, CharField, IntegerField
 from docx import Document
 import io
-
+import os
 
 def texto_despues_del_punto(texto):
     # Encontrar la posición del primer punto
