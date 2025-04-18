@@ -2,7 +2,7 @@ import streamlit as st
 from bitstring import BitArray
 from peewee import MySQLDatabase, Model, CharField, IntegerField
 import hashlib
-
+import os
 
 def convertir_a_sha256(texto):
     sha256_hash = hashlib.sha256(texto.encode()).hexdigest()
