@@ -9,16 +9,16 @@ import io
 import os
 import pymysql
 # Sidebar ordenada
-
-# Configuración de base de datos
-# Configuración con SSL
 db = MySQLDatabase(
     'defaultdb',
     user=os.environ.get("Usuarios_1"),
     password=os.environ.get("Password"),
     host=os.environ.get("Host"),
     port=19758,
-    ssl_params={"ssl": {'fake_flag_to_enable_ssl': True}}
+    # Aquí es donde realmente se pasa el ssl
+    connect_kwargs={
+        'ssl': {'fake_flag_to_enable_ssl': True}
+    }
 )
 
 class Usuario(Model):
