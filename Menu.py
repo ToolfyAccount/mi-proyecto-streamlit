@@ -79,3 +79,12 @@ if st.button("📑 Resumidor"):
 
 if st.button("📖 Creador de Historias"):
     st.switch_page("pages/3_Creador de Historias.py")  # Cambia a la página de Creador de Historias
+
+
+
+import os
+
+# Forzar a Streamlit a usar el puerto que Railway asigna
+port = os.environ.get("PORT", 8501)
+os.environ["STREAMLIT_SERVER_PORT"] = str(port)
+
