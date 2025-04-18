@@ -6,6 +6,7 @@ from ai21.models.chat import ChatMessage
 from peewee import MySQLDatabase, Model, CharField, IntegerField
 from docx import Document
 import io
+import os
 
 # Sidebar ordenada
 
