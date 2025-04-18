@@ -20,9 +20,9 @@ def texto_despues_del_punto(texto):
 # Configuración de base de datos
 db = MySQLDatabase(
     'defaultdb',
-    user=st.secrets["Usuarios_1"],
-    password=st.secrets["Password"],
-    host=st.secrets["Host"],
+    user=os.environ.get("USUARIOS_1"),    # Lee la variable de entorno USUARIOS_1
+    password=os.environ.get("PASSWORD"),   # Lee la variable de entorno PASSWORD
+    host=os.environ.get("HOST"),           # Lee la variable de entorno HOST
     port=19758
 )
 
@@ -37,10 +37,7 @@ class Usuario(Model):
 db.connect()
 db.create_tables([Usuario])
 
-# Sesión
-st.session_state["A_1"] = st.secrets["Usuarios_1"]
-st.session_state["B_1"] = st.secrets["Password"]
-st.session_state["C_1"] = st.secrets["Host"]
+
 
 if "Auntentificado" not in st.session_state or not st.session_state["Auntentificado"]:
     st.error("🚫 No estás autorizado. Redirigiendo al inicio de sesión...")
