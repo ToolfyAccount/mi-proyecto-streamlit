@@ -15,7 +15,6 @@ db = MySQLDatabase(
     password=os.environ.get("Password"),
     host=os.environ.get("Host"),
     port=19758,
-    # Aquí es donde realmente se pasa el ssl
     connect_kwargs={
         'ssl': {'fake_flag_to_enable_ssl': True}
     }
@@ -29,7 +28,13 @@ class Usuario(Model):
     class Meta:
         database = db
 
-db.connect()
+
+# Intentamos conectar y mostramos mensaje en consola
+try:
+    db.connect()
+    print("✅ Conexión exitosa a la base de datos.")
+except Exception as e:
+    print(f"❌ Error al conectar a la base de datos: {e}")
 db.create_tables([Usuario])
 
 # Sesión
