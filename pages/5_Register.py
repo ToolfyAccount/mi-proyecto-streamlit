@@ -9,10 +9,11 @@ def convertir_a_sha256(texto):
 # Conexión a tu base en Aiven
 db = MySQLDatabase(
     'defaultdb',
-    user=os.environ.get("USUARIOS_1"),    # Lee la variable de entorno USUARIOS_1
-    password=os.environ.get("PASSWORD"),   # Lee la variable de entorno PASSWORD
-    host=os.environ.get("HOST"),           # Lee la variable de entorno HOST
-    port=19758
+    user=os.environ.get("Usuarios_1"),
+    password=os.environ.get("Password"),
+    host=os.environ.get("Host"),
+    port=19758,
+    ssl={'fake_flag_to_enable_ssl': True}  # ✅ Este es el cambio importante
 )
 
 class Usuario(Model):
