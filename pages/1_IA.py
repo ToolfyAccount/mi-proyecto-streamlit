@@ -162,7 +162,7 @@ st.markdown('</div>', unsafe_allow_html=True)
 def Respuesta(mensajes):
     response = client.chat.completions.create(
         messages=mensajes,
-        model="jamba-1.5-large",
+        model="jamba-1.6-large",
         temperature=0.6,
         max_tokens=4090
     )
