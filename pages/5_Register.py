@@ -38,8 +38,7 @@ def Binario(texto):
 
 st.title("Registre su cuenta")
 
-st.write(
-    "Inserte su API, para conseguir la API, cree una cuenta en [AI21 LABS](https://www.ai21.com), despues vaya a API key, genere su API, y insertela adelante:")
+
 # Entrada de texto
 usuario = st.text_input("Escribe tu nombre")
 Contraseña = st.text_input("Escribe tu contraseña", type="password")
