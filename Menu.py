@@ -64,10 +64,9 @@ st.markdown('<link href="https://fonts.googleapis.com/css2?family=Montserrat:wgh
 
 st.write('''
 <div class="subtext">
-Bienvenido a la plataforma LeverFul. En esta página encontrarás varias herramientas de IA, cada una especializada en su tarea. Para poder utilizarlas, debes registrarte y, en la zona de API, insertar tu clave API.
+Bienvenido a la plataforma LeverFul. En esta página encontrarás varias herramientas de IA, cada una especializada en su tarea. Para poder utilizarlas, debes registrarte y automáticamente obtendrás acceso total a las 3 IA's en esta plataforma.
 
-
-Para obtenerla, necesitas registrarte en <a href="https://www.ai21.com" target="_blank">AI21 LABS</a> e ir a la sección de APIs. Allí encontrarás tu API key, la cual deberás insertar aquí. 
+PD:Para mis compañeros de PRAXIS, gracias por usar esta IA, se los agradezco.
 
 Selecciona la opción que deseas.
 </div>
