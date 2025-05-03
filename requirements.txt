@@ -63,4 +63,5 @@ watchdog==6.0.0
 mysql-connector-python==9.2.0
 fastapi
 uvicorn
+google-generativeai
 
