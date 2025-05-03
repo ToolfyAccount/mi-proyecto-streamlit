@@ -1,8 +1,8 @@
+import os
 import streamlit as st
 from fastapi import FastAPI
 from starlette.responses import Response
 from streamlit.web.server import Server
-
 
 
 # Configuración de la página
@@ -83,13 +83,9 @@ if st.button("📑 Resumidor"):
     st.switch_page("pages/2_Resumidor.py")  # Cambia a la página de Resumidor
 
 if st.button("📖 Creador de Historias"):
-    st.switch_page("pages/3_Creador de Historias.py")  # Cambia a la página de Creador de Historias
+    # Cambia a la página de Creador de Historias
+    st.switch_page("pages/3_Creador de Historias.py")
 
-
-
-import os
 
 # Forzar a Streamlit a usar el puerto que Railway asigna
 port = os.environ.get("PORT", 8501)
-
-
