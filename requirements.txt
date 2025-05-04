@@ -64,4 +64,4 @@ mysql-connector-python==9.2.0
 fastapi
 uvicorn
 google-generativeai
-
+streamlit_cookies_controller

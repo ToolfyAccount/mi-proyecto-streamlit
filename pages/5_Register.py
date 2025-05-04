@@ -49,24 +49,33 @@ Contraseña = st.text_input("Escribe tu contraseña", type="password")
 
 
 if st.button("Registrarse"):
-    db.connect()
-    db.create_tables([Usuario])
-    # Verificar si el nombre ya existe
-    existe = Usuario.select().where(Usuario.nombre == usuario).exists()
-    for u in Usuario.select():
-        st.write(f"[DEBUG] Usuario en DB: {u.nombre}")
 
-    if not existe:
-        Usuario.create(
-            nombre=usuario, contraseña=convertir_a_sha256(Contraseña))
-        st.write(f"¡Hola, {usuario}!")
-        st.session_state["Auntentificado"] = True
-        st.session_state["usuario"] = usuario
+    if usuario == "":
+        st.warning("Escribe un nombre de usuario valido")
 
-        cookies.set("Username", usuario)
-        st.session_state["Guardado"] = cookies.get("Username")
-        st.switch_page("Menu.py")
     else:
-        st.write("El usuario ya está tomado")
+        if Contraseña == "":
+            st.warning("Escribe una contraseña valida")
 
-    db.close()
+        else:
+            db.connect()
+            db.create_tables([Usuario])
+            # Verificar si el nombre ya existe
+            existe = Usuario.select().where(Usuario.nombre == usuario).exists()
+            for u in Usuario.select():
+                st.write(f"[DEBUG] Usuario en DB: {u.nombre}")
+
+            if not existe:
+                Usuario.create(
+                    nombre=usuario, contraseña=convertir_a_sha256(Contraseña))
+                st.write(f"¡Hola, {usuario}!")
+                st.session_state["Auntentificado"] = True
+                st.session_state["usuario"] = usuario
+
+                cookies.set("Username", usuario)
+                st.session_state["Guardado"] = cookies.get("Username")
+                st.switch_page("Menu.py")
+            else:
+                st.write("El usuario ya está tomado")
+
+        db.close()
