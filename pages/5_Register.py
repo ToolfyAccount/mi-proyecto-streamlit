@@ -3,6 +3,10 @@ import streamlit as st
 from bitstring import BitArray
 import hashlib
 import os
+from streamlit_cookies_controller import CookieController
+
+
+cookies = CookieController()
 
 
 def convertir_a_sha256(texto):
@@ -58,6 +62,9 @@ if st.button("Registrarse"):
         st.write(f"¡Hola, {usuario}!")
         st.session_state["Auntentificado"] = True
         st.session_state["usuario"] = usuario
+
+        cookies.set("Username", usuario)
+        st.session_state["Guardado"] = cookies.get("Username")
         st.switch_page("Menu.py")
     else:
         st.write("El usuario ya está tomado")

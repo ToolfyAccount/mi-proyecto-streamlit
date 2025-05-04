@@ -10,6 +10,17 @@ import os
 import pymysql
 import google.generativeai as genai
 
+st.set_page_config(
+
+    layout="centered",
+    initial_sidebar_state="collapsed"
+)
+
+
+if "Auntentificado" not in st.session_state or not st.session_state["Auntentificado"]:
+    st.error("🚫 No estás autorizado. Redirigiendo al inicio de sesión...")
+    st.switch_page("pages/4_Login.py")
+
 # Sidebar ordenada
 db = MySQLDatabase(
     'defaultdb',
@@ -39,10 +50,6 @@ db.create_tables([Usuario])
 
 # Sesión
 
-
-if "Auntentificado" not in st.session_state or not st.session_state["Auntentificado"]:
-    st.error("🚫 No estás autorizado. Redirigiendo al inicio de sesión...")
-    st.switch_page("pages/4_Login.py")
 
 # --- ESTÉTICA PERSONALIZADA ---
 st.markdown(
@@ -128,8 +135,8 @@ st.markdown(
 )
 
 # --- INTERFAZ PRINCIPAL ---
-st.markdown('<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400&display=swap" rel="stylesheet"> <div class="titulo"> LEVERFUL</div>', unsafe_allow_html=True)
-st.markdown('<div class="main-title">🧠 IA</div>', unsafe_allow_html=True)
+st.markdown('<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400&display=swap" rel="stylesheet"> <div class="titulo"> LEVERFUL AI</div>', unsafe_allow_html=True)
+
 
 # Usuario actual
 User = Usuario.select().where(
@@ -137,7 +144,7 @@ User = Usuario.select().where(
 
 
 st.markdown(
-    f'<div class="subtext">Bienvenido, <strong>{User.nombre}</strong>. Estás en el IA principal.</div>', unsafe_allow_html=True)
+    f'<div class="subtext">Bienvenido, <strong>{User.nombre}</strong>. Estás en LeverFul AI, aca podras preguntar cualquier pregunta de culquier tema.</div>', unsafe_allow_html=True)
 
 # Entrada de pregunta
 

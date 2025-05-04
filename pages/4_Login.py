@@ -3,6 +3,10 @@ from bitstring import BitArray
 from peewee import MySQLDatabase, Model, CharField, IntegerField
 import hashlib
 import os
+from streamlit_cookies_controller import CookieController
+
+
+cookies = CookieController()
 
 
 def convertir_a_sha256(texto):
@@ -54,8 +58,15 @@ if st.button("Iniciar sesion"):
             st.write(f"¡Hola, {usuario}!")
             st.session_state["Auntentificado"] = True
             st.session_state["usuario"] = usuario
+            # Cookie válida por 1 hora
+            cookies.set("Username", usuario)
+            st.session_state["Guardado"] = cookies.get("Username")
 
             st.switch_page("Menu.py")
 
         else:
             st.warning("Contraseña incorrecta")
+
+
+if st.button("Registrarse"):
+    st.switch_page("pages/5_Register.py")

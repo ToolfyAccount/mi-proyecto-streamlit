@@ -1,17 +1,34 @@
-import os
 import streamlit as st
-from fastapi import FastAPI
-from starlette.responses import Response
-from streamlit.web.server import Server
-
-
-# Configuración de la página
+from streamlit_cookies_controller import CookieController
+import os
 st.set_page_config(
-    page_title="LeverFul",  # Título de la ventana en el navegador
-    page_icon="",           # Icono vacío
-    layout="centered",      # Diseño centrado
+    page_title="LeverFul",
+    page_icon="",
+    layout="centered",
     initial_sidebar_state="auto"
 )
+
+
+# Inicializar el controlador de cookies
+cookies = CookieController()
+
+
+if "Guardado" not in st.session_state or not st.session_state["Guardado"]:
+    pass
+
+else:
+    cookies.set("Username", st.session_state["Guardado"])
+
+
+Usuario_Logueado = cookies.get("Username")
+st.write(Usuario_Logueado)
+# Comprobar si el usuario está logueado o no
+if Usuario_Logueado is None:
+    st.session_state["Auntentificado"] = False
+else:
+    st.session_state["Auntentificado"] = True
+    st.session_state["usuario"] = Usuario_Logueado
+
 
 # --- ESTÉTICA PERSONALIZADA ---
 st.markdown(
@@ -59,8 +76,6 @@ st.markdown(
 # Título de la página
 st.markdown('<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400&display=swap" rel="stylesheet"> <div class="titulo">LeverFul</div>', unsafe_allow_html=True)
 
-# Subtítulo
-
 
 st.write('''
 <div class="subtext">
@@ -74,16 +89,31 @@ Selecciona la opción que deseas.
 
 
 st.markdown("Aca hay varias IAs. Selecciona la opción que desees:")
-# Botones para navegar a otras páginas
-if st.button("🧠 IA Principal"):
-    st.switch_page("pages/1_IA.py")  # Cambia a la página de IA
 
-if st.button("📑 Resumidor"):
-    st.switch_page("pages/2_Resumidor.py")  # Cambia a la página de Resumidor
+st.write("Para preguntas generales:")
 
-if st.button("📖 Creador de Historias"):
-    # Cambia a la página de Creador de Historias
-    st.switch_page("pages/3_Creador de Historias.py")
+if st.button("🧠 LeverFul AI"):
+    if "Auntentificado" not in st.session_state or not st.session_state["Auntentificado"]:
+        st.session_state["Ir"] = "pages/1_LeverFul AI.py"
+    st.switch_page("pages/1_LeverFul AI.py")
+    # Cambia a la página de IA
+st.write(" ")
+st.write("Para resumir textos o archivos:")
+
+if st.button("📑 LeverFul Snap"):
+    if "Auntentificado" not in st.session_state or not st.session_state["Auntentificado"]:
+        st.session_state["Ir"] = "pages/2_LeverFul Snap.py"
+    # Cambia a la página de Resumidor
+    st.switch_page("pages/2_LeverFul Snap.py")
+
+st.write(" ")
+st.write("Para crear historias:")
+
+
+if st.button("📖 LeverFul Maker"):
+    if "Auntentificado" not in st.session_state or not st.session_state["Auntentificado"]:
+        st.session_state["Ir"] = "pages/3_LeverFul Maker.py"
+    st.switch_page("pages/3_LeverFul Maker.py")
 
 
 # Forzar a Streamlit a usar el puerto que Railway asigna
