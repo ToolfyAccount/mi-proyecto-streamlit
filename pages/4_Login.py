@@ -6,7 +6,22 @@ import os
 from streamlit_cookies_controller import CookieController
 
 
+st.set_page_config(
+
+    layout="centered",
+    initial_sidebar_state="collapsed"
+)
+
+
 cookies = CookieController()
+Usuario_Logueado = cookies.get("Username")
+
+# Comprobar si el usuario está logueado o no
+if Usuario_Logueado is None:
+    st.session_state["Auntentificado"] = False
+else:
+    st.session_state["Auntentificado"] = True
+    st.session_state["usuario"] = Usuario_Logueado
 
 
 def convertir_a_sha256(texto):

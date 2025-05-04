@@ -21,7 +21,7 @@ else:
 
 
 Usuario_Logueado = cookies.get("Username")
-st.write(Usuario_Logueado)
+
 # Comprobar si el usuario está logueado o no
 if Usuario_Logueado is None:
     st.session_state["Auntentificado"] = False
