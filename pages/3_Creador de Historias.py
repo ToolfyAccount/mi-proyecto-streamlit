@@ -165,8 +165,7 @@ if archivo_nuevo is not None:
 Text = st.chat_input("Pon la descripcion de la historia")
 st.markdown('</div>', unsafe_allow_html=True)
 
-client = AI21Client(api_key=API)
-# Función para obtener respuesta
+
 
 API = os.environ.get("API")
 genai.configure(api_key=API)
