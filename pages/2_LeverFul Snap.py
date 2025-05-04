@@ -53,7 +53,7 @@ db.create_tables([Usuario])
 
 if "Auntentificado" not in st.session_state or not st.session_state["Auntentificado"]:
     st.error("🚫 No estás autorizado. Redirigiendo al inicio de sesión...")
-    st.switch_page("pages/4_Login.py")
+    st.switch_page("pages/5_Login.py")
 
 
 # --- ESTÉTICA PERSONALIZADA ---

@@ -85,4 +85,4 @@ if st.button("Iniciar sesion"):
 
 
 if st.button("Registrarse"):
-    st.switch_page("pages/5_Register.py")
+    st.switch_page("pages/6_Register.py")

@@ -96,4 +96,4 @@ if st.button("Registrarse"):
 
 
 if st.button("Login"):
-    st.switch_page("pages/4_Login.py")
+    st.switch_page("pages/5_Login.py")
