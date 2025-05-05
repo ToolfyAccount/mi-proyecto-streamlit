@@ -1,4 +1,4 @@
-import streamlit as st
+noimport streamlit as st
 from streamlit_cookies_controller import CookieController
 import os
 st.set_page_config(
@@ -79,7 +79,7 @@ st.markdown('<link href="https://fonts.googleapis.com/css2?family=Montserrat:wgh
 
 st.write('''
 <div class="subtext">
-Bienvenido a la plataforma LeverFul. En esta página encontrarás varias herramientas de IA, cada una especializada en su tarea. Para poder utilizarlas, debes registrarte y automáticamente obtendrás acceso total a las 3 IA's en esta plataforma.
+Bienvenido a la plataforma LeverFul. En esta página encontrarás varias herramientas de IA, cada una especializada en su tarea. Para poder utilizarlas, debes registrarte y automáticamente obtendrás acceso total a las 4 IA's en esta plataforma.
 
 PD:Para mis compañeros de PRAXIS, gracias por usar esta IA, se los agradezco.
 
@@ -115,6 +115,12 @@ if st.button("📖 LeverFul Maker"):
         st.session_state["Ir"] = "pages/3_LeverFul Maker.py"
     st.switch_page("pages/3_LeverFul Maker.py")
 
+st.write(" ")
+st.write("Para preguntas generales con respuesta directa")
+
+if st.button("🌨️ LeverFul Snap"):
+    if "Auntentificado" not in st.session_state or not st.session_state["Auntentificado"]:
+        st.session_state["Ir"] = "pages/4_LeverFul Cold.py"
 
 # Forzar a Streamlit a usar el puerto que Railway asigna
 port = os.environ.get("PORT", 8501)
