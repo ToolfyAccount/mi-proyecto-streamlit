@@ -120,7 +120,8 @@ st.write("Para preguntas generales con respuesta directa")
 
 if st.button("❄️ LeverFul Cold"):
     if "Auntentificado" not in st.session_state or not st.session_state["Auntentificado"]:
-        st.session_state["Ir"] = "pages/4_LeverFul Cold.py"
+
+    st.switch_page("pages/4_LeverFul Cold.py") 
 
 # Forzar a Streamlit a usar el puerto que Railway asigna
 port = os.environ.get("PORT", 8501)
