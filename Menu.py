@@ -1,4 +1,4 @@
-noimport streamlit as st
+import streamlit as st
 from streamlit_cookies_controller import CookieController
 import os
 st.set_page_config(
