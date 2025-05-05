@@ -118,7 +118,7 @@ if st.button("📖 LeverFul Maker"):
 st.write(" ")
 st.write("Para preguntas generales con respuesta directa")
 
-if st.button("🌨️ LeverFul Snap"):
+if st.button("❄️ LeverFul Cold"):
     if "Auntentificado" not in st.session_state or not st.session_state["Auntentificado"]:
         st.session_state["Ir"] = "pages/4_LeverFul Cold.py"
 
